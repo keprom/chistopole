@@ -12,8 +12,8 @@ function select($var, $name, $value)
 <h3>Добавление акта</h3>
 <?php echo form_open("billing/adding_akt_with_tariff/{$firm_id}"); ?>
 <input type=hidden name="firm_id" value="<?php echo $firm_id; ?>">
-Количество киловатт <input type=text name=kvt/><br>
-Дата начисления акта <input type=text name=data/><br>
+Количество киловатт <input type="text" name="kvt"/><br>
+Дата начисления акта <input type="text" name="data"/><br>
 Тариф
 <select name=tariff>
     <?php
