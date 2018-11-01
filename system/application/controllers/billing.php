@@ -1599,6 +1599,7 @@ class Billing extends Controller
                 }
 
                 //заменяем кириллицу на латиницу в МФО
+                $n->mfo = str_replace("ИИН", "", $n->mfo);
                 $n->mfo = str_replace($russian_letters, $english_letters, $n->mfo);
 
                 //вдруг пропущен символ
