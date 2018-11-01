@@ -1573,6 +1573,9 @@ class Billing extends Controller
             $db2 = dbase_open("c:/oplata/rekv.dbf", 2);
             foreach ($nach->result() as $n) {
 
+                //замена слова ИИН в БИНе
+                $n->bin = str_replace("ИИН", "", $n->bin);
+
                 //находим некорректные БИКи и МФО банков
                 if ((mb_strlen(trim($n->mfo), 'UTF-8') != 8) and ($n->mfo != '0000000000')) {
                     $ei_mfo[$n->bank]['len'] = mb_strlen(trim($n->mfo), 'UTF-8');

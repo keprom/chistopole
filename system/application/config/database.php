@@ -39,7 +39,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "postgres";
-$db['default']['password'] = "gasutooke2002";
+$db['default']['password'] = "gasutooke";
 $db['default']['database'] = "chistopole.prom";
 $db['default']['dbdriver'] = "postgre";
 $db['default']['dbprefix'] = "";
