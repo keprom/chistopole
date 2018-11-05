@@ -1,14 +1,17 @@
+<?php $title = isset($title) ? $title : 'Учет электроэнергии. Промышленный отдел'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>Учет электроэнергии. Промышленный отдел</title>
+    <title><?php echo $title; ?></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>css/1.css" type="text/css" media="screen,projection"/>
-    <script type="text/javascript" src="<?php echo base_url(); ?>addclasskillclass.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>attachevent.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>addcss.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>tabtastic.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>tabtastic.css" type="text/css" media="screen,projection"/>
+	<link rel="shortcut icon" type="image/png" href="/img/favicon.png"/>
+    <link rel="stylesheet" href="/css/1.css" type="text/css" media="screen,projection"/>
+    <link rel="stylesheet" href="/css/fullpage.css" type="text/css" media="screen,projection"/>
+    <script type="text/javascript" src="/addclasskillclass.js"></script>
+    <script type="text/javascript" src="/attachevent.js"></script>
+    <script type="text/javascript" src="/addcss.js"></script>
+    <script type="text/javascript" src="/tabtastic.js"></script>
+    <link rel="stylesheet" href="/tabtastic.css" type="text/css" media="screen,projection"/>
 </head>
 
 <body>
