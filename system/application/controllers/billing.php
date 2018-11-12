@@ -1571,15 +1571,11 @@ class Billing extends Controller
 
     function perenos_rek1()
     {
-        header('Content-Type: text/html; charset="utf-8"');
-
-
-        $this->db->order_by("dog");
-        $nach = $this->db->get("industry.perenos_rekvizit");
-        set_time_limit(0);
         $db = dbase_open("c:/oplata/rekv.dbf", 2);
-
         if ($db) {
+            header('Content-Type: text/html; charset="utf-8"');
+            $this->db->order_by("dog");
+            $nach = $this->db->get("industry.perenos_rekvizit");
             for ($i = 1; $i < dbase_numrecords($db) + 1; $i++) {
                 dbase_delete_record($db, $i);
             }
@@ -1596,14 +1592,11 @@ class Billing extends Controller
             $db2 = dbase_open("c:/oplata/rekv.dbf", 2);
             foreach ($nach->result() as $n) {
 
-                //замена слова ИИН в БИНе
-                $n->bin = str_replace("ИИН", "", $n->bin);
-
                 //находим некорректные БИКи и МФО банков
                 if ((mb_strlen(trim($n->mfo), 'UTF-8') != 8) and ($n->mfo != '0000000000')) {
-                    $ei_mfo[$n->bank]['len'] = mb_strlen(trim($n->mfo), 'UTF-8');
-                    $ei_mfo[$n->bank]['mfo'] = trim($n->mfo);
-                    $ei_mfo[$n->bank]['dog'] = trim($n->dog);
+                    $ei_mfo[$n->dog]['len'] = mb_strlen(trim($n->mfo), 'UTF-8');
+                    $ei_mfo[$n->dog]['mfo'] = trim($n->mfo);
+                    $ei_mfo[$n->dog]['bank'] = trim($n->bank);
                     $e++;
                 }
 
@@ -1625,7 +1618,6 @@ class Billing extends Controller
                 }
 
                 //заменяем кириллицу на латиницу в МФО
-                $n->mfo = str_replace("ИИН", "", $n->mfo);
                 $n->mfo = str_replace($russian_letters, $english_letters, $n->mfo);
 
                 //вдруг пропущен символ
@@ -1663,28 +1655,19 @@ class Billing extends Controller
             }
             dbase_close($db2);
 
-            $ei_mfo = ($ei_mfo);
-
-            echo "<br><br>";
-
             echo "<b>Договора с некорректными БИНами:</b><br>";
             foreach ($incorrected_bins as $ib) {
                 echo $ib['dog'] . ": " . $ib['bin'] . "<br>";
             }
-
-            echo "<br><br>";
-
+            echo "<br>";
             echo "<b>Банки с некорректными МФО:</b><br>";
             foreach ($ei_mfo as $key => $ib) {
-                echo $ib['dog'].":
-				".$key . ": " . $ib['mfo'] . ": " . $ib['len'] . "<br>";
+                echo $key . ": " . $ib['bank'] . ": " . $ib['mfo'] . ":" . $ib['len']."<br>";
             }
-
         } else {
-            echo "База не открыта";
+            echo "DBF file is busy!";
         }
     }
-
 
     function perenos_nach()
     {
