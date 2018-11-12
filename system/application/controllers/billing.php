@@ -1605,6 +1605,9 @@ class Billing extends Controller
                     $n->mfo = '';
                 }
 
+                //замена слова ИИН в БИНе
+                $n->bin = str_replace("ИИН", "", $n->bin);
+
                 //находим некорректные БИНы организаций
                 if ((mb_strlen(trim($n->bin), 'UTF-8') != 12) and (mb_strlen(trim($n->bin), 'UTF-8') != 0)) {
                     $incorrected_bins[$i]['dog'] = $n->dog;
