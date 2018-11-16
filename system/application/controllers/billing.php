@@ -1073,7 +1073,7 @@ class Billing extends Controller
 
         $this->db->where('id', $data['firm']->bank_id);
         $data['bank'] = $this->db->get("industry.bank")->row();
-        $data['schet'] = !isset($_POST['schet']) ? " ОПЛАТА" : "-ФАКТУРА";
+        $data['schet'] = !isset($_POST['schet']) ? " НА ОПЛАТУ" : "-ФАКТУРА";
 
 
         if ($_POST['type'] == "by_tenge") {

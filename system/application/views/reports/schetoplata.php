@@ -138,37 +138,37 @@ function f_d2($var)
 </table>
 <br>
 <table cellSpacing=0 border=1>
-    <TR>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>№ п/п</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Наименование товаров
+    <tr>
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>№ п/п</FONT>
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Наименование товаров
                 (работ, услуг)</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Ед. изм.</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Кол-во
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Ед. изм.</FONT>
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Кол-во
                 (объем)</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Цена тенге</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Стоимость товаров
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Цена тенге</FONT>
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Стоимость товаров
                 (работ, услуг) без НДС</FONT>
-        <TD vAlign=center align=middle colSpan=2><FONT size=2>НДС</FONT>
-        <TD vAlign=center align=middle rowSpan=2><FONT size=2>Всего стоимость
+        <td vAlign=center align=middle colSpan=2><FONT size=2>НДС</FONT>
+        <td vAlign=center align=middle rowSpan=2><FONT size=2>Всего стоимость
                 реализации</FONT>
-        <TD vAlign=center align=middle colSpan=2><FONT size=2>Акциз</FONT></TD>
-    <TR>
-        <TD vAlign=center align=middle><FONT size=2>Ставка</FONT>
-        <TD vAlign=center align=middle><FONT size=2>Сумма</FONT>
-        <TD vAlign=center align=middle><FONT size=2>Ставка</FONT>
-        <TD vAlign=center align=middle><FONT size=2>Сумма</FONT></TD>
-    <TR>
-        <TD vAlign=center align=middle><FONT size=1><I>1</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>2</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>3</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>4</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>5</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>6</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>7</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>8</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>9</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>10</I></FONT>
-        <TD vAlign=center align=middle><FONT size=1><I>11</I></FONT></TD>
+        <td vAlign=center align=middle colSpan=2><FONT size=2>Акциз</FONT></td>
+    <tr>
+        <td vAlign=center align=middle><FONT size=2>Ставка</FONT>
+        <td vAlign=center align=middle><FONT size=2>Сумма</FONT>
+        <td vAlign=center align=middle><FONT size=2>Ставка</FONT>
+        <td vAlign=center align=middle><FONT size=2>Сумма</FONT></td>
+    <tr>
+        <td vAlign=center align=middle><FONT size=1><I>1</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>2</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>3</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>4</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>5</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>6</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>7</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>8</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>9</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>10</I></FONT>
+        <td vAlign=center align=middle><FONT size=1><I>11</I></FONT></td>
         <?php $sum_bez_nds = 0;
         $sum_nds = 0;
         $sum = 0;
@@ -178,40 +178,40 @@ function f_d2($var)
         $j++):
         if ($tariff_kvt[$j] == 0) continue;
         ?>
-    <TR>
-        <TD vAlign=center align=middle><FONT size=1><?php echo $i++; ?> </FONT>
-        <TD vAlign=center align=middle><FONT size=1>Электроэнергия</FONT>
-        <TD vAlign=center align=middle><FONT size=1>кВт</FONT>
-        <TD vAlign=center align=middle><FONT size=1>
+    <tr>
+        <td vAlign=center align=middle><FONT size=1><?php echo $i++; ?> </FONT>
+        <td vAlign=center align=middle><FONT size=1>Электроэнергия</FONT>
+        <td vAlign=center align=middle><FONT size=1>кВт</FONT>
+        <td vAlign=center align=middle><FONT size=1>
                 <?php echo f_d($tariff_kvt[$j]); ?> </FONT>
-        <TD vAlign=center align=middle><FONT size=1>
+        <td vAlign=center align=middle><FONT size=1>
                 <?php echo f_d($tariff_value[$j]); ?> </FONT>
-        <TD vAlign=center align=middle><FONT size=1>
+        <td vAlign=center align=middle><FONT size=1>
                 <?php
                 echo f_d($tariff_kvt[$j] * $tariff_value[$j]);
                 $sum_bez_nds += f_d2($tariff_kvt[$j] * $tariff_value[$j]);
                 ?> </FONT>
-        <TD vAlign=center align=middle><FONT size=1> <?php echo f_d($period->nds); ?> </FONT>
-        <TD vAlign=center align=middle><FONT size=1>
+        <td vAlign=center align=middle><FONT size=1> <?php echo f_d($period->nds); ?> </FONT>
+        <td vAlign=center align=middle><FONT size=1>
                 <?php echo f_d($period->nds * $tariff_kvt[$j] * $tariff_value[$j] / 100);
                 $sum_nds += $period->nds * $tariff_kvt[$j] * $tariff_value[$j] / 100; ?>
             </FONT>
-        <TD vAlign=center align=middle><FONT size=1>
+        <td vAlign=center align=middle><FONT size=1>
                 <?php echo
                 f_d(($period->nds + 100) * $tariff_kvt[$j] * $tariff_value[$j] / 100);
                 $sum += ($period->nds + 100) * $tariff_kvt[$j] * $tariff_value[$j] / 100; ?>
             </FONT>
-        <TD vAlign=center align=middle><FONT size=1>0</FONT>
-        <TD vAlign=center align=middle><FONT size=1>0</FONT></TD>
+        <td vAlign=center align=middle><FONT size=1>0</FONT>
+        <td vAlign=center align=middle><FONT size=1>0</FONT></td>
         <?php endfor; ?>
-    <TR>
-        <TD align=left colSpan=5><FONT size=2><B>Всего по счету:</B></FONT>
-        <TD align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds); ?></B></FONT>
-        <TD align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
-        <TD align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_nds); ?></B></FONT>
-        <TD align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds + $sum_nds); ?></B></FONT>
-        <TD align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
-        <TD align=right><FONT size=2><B>&nbsp;</B></FONT></TD>
+    <tr>
+        <td align=left colSpan=5><FONT size=2><B>Всего по счету:</B></FONT>
+        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds); ?></B></FONT>
+        <td align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
+        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_nds); ?></B></FONT>
+        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds + $sum_nds); ?></B></FONT>
+        <td align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
+        <td align=right><FONT size=2><B>&nbsp;</B></FONT></td>
 
 </table>
 <center>
