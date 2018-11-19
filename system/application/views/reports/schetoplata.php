@@ -18,6 +18,7 @@ function f_d2($var)
 }
 
 ?>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Счет на оплату</title>
@@ -25,9 +26,9 @@ function f_d2($var)
     <link rel="stylesheet" href="/css/fullpage.css">
 </head>
 <body class="portrait">
-<table width=100%>
+<table width="100%">
     <tr>
-        <td align=left>
+        <td align="left">
             <center><b>СЧЕТ<?php echo $schet; ?> №</b>
                 <?php echo $number . ' от ';
                 if (strlen($data_schet) == 0) {
@@ -81,7 +82,7 @@ function f_d2($var)
         </td>
         <td> (4)</td>
     </tr>
-    <tr align=right>
+    <tr align="right">
         <td width=2100px><i><FONT size=1>(государство, регион, область, город, район) </font> </i></td>
         <td></td>
     </tr>
@@ -108,7 +109,7 @@ function f_d2($var)
         </td>
         <td> (8)</td>
     </tr>
-    <tr align=right>
+    <tr align="right">
         <td width=2100px><i><FONT size=1>(РНН, наименование и адрес места нахождения) </font></i></td>
         <td></td>
     </tr>
@@ -118,7 +119,7 @@ function f_d2($var)
         </td>
         <td> (9)</td>
     </tr>
-    <tr align=right>
+    <tr align="right">
         <td width=2100px><i><FONT size=1>(РНН, наименование и адрес места нахождения) </font></i></td>
         <td></td>
     </tr>
@@ -206,13 +207,13 @@ function f_d2($var)
         <td vAlign=center align=middle><FONT size=1>0</FONT></td>
         <?php endfor; ?>
     <tr>
-        <td align=left colSpan=5><FONT size=2><B>Всего по счету:</B></FONT>
-        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds); ?></B></FONT>
-        <td align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
-        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_nds); ?></B></FONT>
-        <td align=right><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds + $sum_nds); ?></B></FONT>
-        <td align=right bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
-        <td align=right><FONT size=2><B>&nbsp;</B></FONT></td>
+        <td align="left" colSpan=5><FONT size=2><B>Всего по счету:</B></FONT>
+        <td align="right"><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds); ?></B></FONT>
+        <td align="right" bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
+        <td align="right"><FONT size=2><B>&nbsp;<?php echo f_d2($sum_nds); ?></B></FONT>
+        <td align="right"><FONT size=2><B>&nbsp;<?php echo f_d2($sum_bez_nds + $sum_nds); ?></B></FONT>
+        <td align="right" bgColor=#c0c0c0><FONT size=2>&nbsp;</FONT>
+        <td align="right"><FONT size=2><B>&nbsp;</B></FONT></td>
 
 </table>
 <center>
@@ -221,36 +222,36 @@ function f_d2($var)
 <br>
 <table width=100%>
     <tr>
-        <td align=left>Руководитель организации</td>
-        <td align=right>ВЫДАЛ (Ответственное лицо поставщика)</td>
+        <td align="left">Руководитель организации</td>
+        <td align="right">ВЫДАЛ (Ответственное лицо поставщика)</td>
     </tr>
     <tr>
-        <td align=left><?php echo $org->director; ?>____________</td>
-        <td align=right>Техник ____________________________</td>
+        <td align="left"><?php echo $org->director; ?>____________</td>
+        <td align="right">Техник ____________________________</td>
     </tr>
     <tr>
-        <td align=left>(Ф.И.О., подпись)</td>
-        <td align=right>(Ф.И.О., подпись)</td>
+        <td align="left">(Ф.И.О., подпись)</td>
+        <td align="right">(Ф.И.О., подпись)</td>
     </tr>
     <tr>
-        <td align=left>&nbsp;</td>
-        <td align=right>&nbsp;</td>
+        <td align="left">&nbsp;</td>
+        <td align="right">&nbsp;</td>
     </tr>
 
     <tr>
-        <td align=left>Главный бухгалтер организации</td>
-        <td align=right>Бухгалтер потребителя&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td align="left">Главный бухгалтер организации</td>
+        <td align="right">Бухгалтер потребителя&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     <tr>
-        <td align=left><?php echo $org->glav_buh; ?>_______________</td>
-        <td align=right>___________________</td>
+        <td align="left"><?php echo $org->glav_buh; ?>_______________</td>
+        <td align="right">___________________</td>
     </tr>
     <tr>
-        <td align=left>(Ф.И.О., подпись)</td>
-        <td align=right>(Ф.И.О., подпись)</td>
+        <td align="left">(Ф.И.О., подпись)</td>
+        <td align="right">(Ф.И.О., подпись)</td>
     </tr>
     <tr>
-        <td align=left><br/>Примечание. Без печати недействительно.<br/>Оригинал (первый экземпляр)-покупателю.<br/>Копия
+        <td align="left"><br/>Примечание. Без печати недействительно.<br/>Оригинал (первый экземпляр)-покупателю.<br/>Копия
             (второй экземпляр)-поставщику.
         </td>
         <td></td>
