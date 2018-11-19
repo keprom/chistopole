@@ -22,8 +22,9 @@ function f_d2($var)
 <head>
     <title>Счет на оплату</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="/css/fullpage.css">
 </head>
-<body>
+<body class="portrait">
 <table width=100%>
     <tr>
         <td align=left>
