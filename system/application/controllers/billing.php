@@ -1704,18 +1704,16 @@ class Billing extends Controller
 
     function perenos_nach()
     {
-        $nach = $this->db->get("industry.schetfactura_to_1c");
-
         set_time_limit(0);
-        $db = dbase_open("c:/oplata/schet.dbf", 2);
-
+        @$db = dbase_open("c:/oplata/schet.dbf", 2);
         if ($db) {
+            $this->db->where('period_id', $this->get_cpi());
+            $nach = $this->db->get("industry.schetfactura_to_1c");
             for ($i = 1; $i < dbase_numrecords($db) + 1; $i++) {
                 dbase_delete_record($db, $i);
             }
             dbase_pack($db);
             dbase_close($db);
-
             $db2 = dbase_open("c:/oplata/schet.dbf", 2);
             foreach ($nach->result() as $n) {
                 dbase_add_record($db2,
@@ -1723,17 +1721,19 @@ class Billing extends Controller
                         $n->dog,
                         $n->kvt,
                         $n->tarif, $n->beznds, $n->nds, $n->snds, $n->nomer, $this->d2($n->data), "0" . $n->dog1
-
                     )
                 );
             }
-
-
             dbase_close($db2);
-        } else
-            echo "База не открыта";
+            $array = array(1 => 'Перенос прошел успешно!');
+            $this->session->set_flashdata('success', $array);
+            redirect('billing/pre_perehod');
+        } else {
+            $array = array(1 => 'Перенос не возможен. Закройте файл schet.dbf!');
+            $this->session->set_flashdata('error', $array);
+            redirect('billing/pre_perehod');
+        }
     }
-
 
     function oplata_import()
     {
