@@ -920,10 +920,8 @@ class Billing extends Controller
         $this->db->where('firm_id', $_POST['firm_id']);
         $this->db->update('industry.schetfactura_date',
             array(
-
                 'schet2' => $_POST['schet2'],
                 'data_schet' => $_POST['data_schet']
-
             )
         );
         $this->load->plugin('chislo');
@@ -960,74 +958,20 @@ class Billing extends Controller
         $this->db->where('period_id', $_POST['period_id']);
         $this->db->where('firm_id', $_POST['firm_id']);
         $data['itog'] = $this->db->get("industry.vedomost_itog")->row();
+        $this->load->library("pdf/pdf");
+        $this->pdf->SetSubject('TCPDF Tutorial');
+        $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $this->pdf->SetAutoPageBreak(TRUE);
+        $this->pdf->SetFont('dejavusans', '', 9);
+        $this->pdf->AddPage('P');
 
-        if (!isset($_POST['html'])) {
-            if (isset($_POST['new_schetfactura'])) {
-                $string = $this->load->view("reports/schetfactura_new", $data, TRUE);
-
-
-                $this->load->library("pdf/pdf");
-
-                $this->pdf->SetSubject('TCPDF Tutorial');
-                $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-                $this->pdf->SetAutoPageBreak(TRUE);
-                // set font
-                $this->pdf->SetFont('dejavusans', '', 9);
-
-                // add a page
-                $this->pdf->AddPage('P');
-
-                $this->pdf->writeHTML($string);
-
-                //Close and output PDF document
-                $this->pdf->Output('example_001.pdf', 'I');
-            }
-            if (isset($_POST['nakladnaya'])) {
-                $string = $this->load->view("reports/nakladnaya", $data, TRUE);
-
-
-                $this->load->library("pdf/pdf");
-
-                $this->pdf->SetSubject('TCPDF Tutorial');
-                $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-                $this->pdf->SetAutoPageBreak(TRUE);
-                // set font
-                $this->pdf->SetFont('dejavusans', '', 9);
-
-                // add a page
-                $this->pdf->AddPage('P');
-
-                $this->pdf->writeHTML($string);
-
-                //Close and output PDF document
-                $this->pdf->Output('example_001.pdf', 'I');
-            }
-            if (isset($_POST['akt_vypolnenyh_rabot'])) {
-                $this->load->view("reports/avp", $data);
-
-            } else {
-                $string = $this->load->view("reports/schetfactura", $data, TRUE);
-
-
-                $this->load->library("pdf/pdf");
-
-                $this->pdf->SetSubject('TCPDF Tutorial');
-                $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-                $this->pdf->SetAutoPageBreak(TRUE);
-                // set font
-                $this->pdf->SetFont('dejavusans', '', 9);
-
-                // add a page
-                $this->pdf->AddPage('P');
-
-                $this->pdf->writeHTML($string);
-
-                //Close and output PDF document
-                $this->pdf->Output('example_001.pdf', 'I');
-            }
+        if (!isset($_POST['nakladnaya'])) {
+            $string = $this->load->view("reports/schetfactura_new", $data, TRUE);
         } else {
-            $this->load->view("reports/schetfactura2", $data);
+            $string = $this->load->view("reports/nakladnaya", $data, TRUE);
         }
+        $this->pdf->writeHTML($string);
+        $this->pdf->Output('example_001.pdf', 'I');
     }
 
     function pre_schetoplata()

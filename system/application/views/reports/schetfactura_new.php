@@ -216,7 +216,7 @@ function datetostring2($date)
             <td width=2100px>Жүк алушы <br/>Грузополучатель <u>  <?php if (strlen($edit6) == 0) {
                         echo $firm->name;
                     } else {
-                        $firm->edit6;
+                        echo $firm->edit6;
                     } ?>                                                                                                                   </u>
             </td>
             <td> (9)</td>
