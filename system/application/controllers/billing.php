@@ -992,7 +992,8 @@ class Billing extends Controller
         $this->db->where('period_id', $_POST['period_id']);
         $this->db->where('firm_id', $_POST['firm_id']);
         $data['r'] = $this->db->get('industry.schetfactura_date');
-
+        $this->db->where('id', $_POST['firm_id']);
+        $data['firm'] = $this->db->get("industry.firm")->row();
         $sql = "select distinct value as tariff_value from industry.tariff_value ";
         $data['tariffs'] = $this->db->query($sql);
 
@@ -1015,6 +1016,9 @@ class Billing extends Controller
         $data['number'] = $_POST['number_schet'] == "" ? $data['schetfactura_date']->id : $_POST['number_schet'];
         $this->db->where('id', $_POST['period_id']);
         $data['period'] = $this->db->get('industry.period')->row();
+
+        $this->db->where('id', $_POST['firm_id']);
+        $this->db->update("industry.firm", array('edit6'=>$_POST['edit6']));
 
         $this->db->where('id', $data['firm']->bank_id);
         $data['bank'] = $this->db->get("industry.bank")->row();

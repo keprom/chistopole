@@ -6,6 +6,7 @@ echo "<input type=hidden name=tariff_count value=" . $tariffs->num_rows() . " >"
 echo "Другая дата <input  name=data_schet value='' ><br>";
 echo "Другой номер счета оплаты <input  name=number_schet value='' ><br>";
 echo "<input type=hidden name=type value='by_tenge' >";
+echo "Грузополучатель <input type='text' name='edit6' value='{$firm->edit6}'><br>";
 echo "Выдать счет фактурой <input type=checkbox name=schet  ><br>";
 
 $i = 0;
@@ -25,6 +26,7 @@ echo "<input type=hidden name=period_id value=" . $period_id . " >";
 echo "<input type=hidden name=tariff_count value=" . $tariffs->num_rows() . " >";
 echo "Другая дата <input  name=data_schet value='' ><br>";
 echo "Другой номер счета оплаты <input  name=number_schet value='' ><br>";
+echo "Грузополучатель <input type='text' name='edit6' value='{$firm->edit6}'><br>";
 echo "Выдать счет фактурой <input type=checkbox name=schet   ><br>";
 
 $i = 0;
