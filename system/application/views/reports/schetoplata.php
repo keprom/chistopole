@@ -85,7 +85,7 @@ function f_d2($var)
         <td> (7)</td>
     </tr>
     <tr>
-        <td> Грузоотправитель <u><?php echo $firm->edit5; ?></u></td>
+        <td> Грузоотправитель <u><?php echo "БИН " . $org->bin . ", " . $org->org_name . ", " . $org->address; ?></u></td>
         <td> (8)</td>
     </tr>
     <tr align="right">

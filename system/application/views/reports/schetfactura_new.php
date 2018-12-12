@@ -169,14 +169,14 @@ function datetostring2($date)
         </tr>
         <tr>
             <td width=2100px>Шарт (келісім-шарт) бойынша төлем шарттары<br/>Условия оплаты по договору
-                (контракту)<u>    <?php echo $edit1; ?>                                                                                                                             </u>
+                (контракту)<u>    <?php echo $edit1; ?></u>
             </td>
             <td> (4)</td>
         </tr>
         <tr>
             <td width=2100px>Жеткізілетін тауарларды (жұмыстар,құзметтерді) белгіленген пункті<br/>Пункт назначения
                 поставляемых товаров (работ,
-                услуг)<u>   <?php echo $edit2; ?>                                                                                                                                           </u>
+                услуг)<u>   <?php echo $edit2; ?></u>
             </td>
         </tr>
         <tr align=right>
@@ -192,7 +192,7 @@ function datetostring2($date)
         </tr>
         <tr>
             <td width=2100px>Жіберу тәсілі<br/>Способ отправления
-                <u>  <?php echo $edit4; ?>                                                                                                                                                    </u>
+                <u>  <?php echo $edit4; ?></u>
             </td>
             <td> (6)</td>
         </tr>
@@ -204,7 +204,7 @@ function datetostring2($date)
         </tr>
         <tr>
             <td width=2100px>Жүк жіберуші<br/> Грузоотправитель
-                <u><?php echo "БИН " . $org->bin . ", " . $org->org_name . ", " . $org->address; ?>                                                                                                                   </u>
+                <u><?php echo "БИН " . $org->bin . ", " . $org->org_name . ", " . $org->address; ?></u>
             </td>
             <td> (8)</td>
         </tr>
@@ -217,7 +217,7 @@ function datetostring2($date)
                         echo $firm->name;
                     } else {
                         echo $firm->edit6;
-                    } ?>                                                                                                                   </u>
+                    } ?></u>
             </td>
             <td> (9)</td>
         </tr>
