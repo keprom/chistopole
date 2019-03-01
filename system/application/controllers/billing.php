@@ -2032,12 +2032,11 @@ class Billing extends Controller
     #метод переключения
     function adding_oplata()
     {
-
-        $sql = "select count(*) from industry.firm where dogovor=" . $_POST['dogovor'];
-        $count = $this->db->query($sql)->row()->count;
+        $sql="select count(*) from industry.firm where nomer1c=".$_POST['nomer1c'];
+        $count=$this->db->query($sql)->row()->count;
+        $sql="select id,name from industry.firm where nomer1c=".$_POST['nomer1c'];
+        $query=$this->db->query($sql);
         $current_nds = $this->db->query("select * from industry.current_nds()")->row()->current_nds;
-        $sql = "select id,name from industry.firm where dogovor=" . $_POST['dogovor'];
-        $query = $this->db->query($sql);
         if ($count > 0) {
             $firm_id = $this->db->query($sql)->row()->id;
             $firm_name = $this->db->query($sql)->row()->name;
@@ -2046,7 +2045,6 @@ class Billing extends Controller
             $sql = "select count(*)  from industry.payment_number where number='" . $_POST['payment_number'] . "'";
             $count = $this->db->query($sql)->row()->count;
             $sql = "select id from industry.payment_number where number='" . $_POST['payment_number'] . "'";
-            echo $sql;
             $query = $this->db->query($sql);
             if ($count > 0) {
                 $data['payment_number_id'] = $query->row()->id;

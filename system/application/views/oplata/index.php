@@ -17,11 +17,11 @@ function f_d($var)
     <br>
     <?php echo form_open('billing/adding_oplata'); ?>
 
-    Дата <input name=data value='<?php echo $this->session->userdata('data'); ?>'> <br>
-    Номер счета <input name=payment_number value='<?php echo $this->session->userdata('number'); ?>'><br>
-    Договор: <input name=nomer1c><br>
-    Сумма <input name=value><br>
-    Номер документа <input name=document_number><br>
+    Дата <input name='data' value='<?php echo $this->session->userdata('data'); ?>'> <br>
+    Номер счета <input name='payment_number' value='<?php echo $this->session->userdata('number'); ?>'><br>
+    Номер 1С: <input name='nomer1c'><br>
+    Сумма <input name='value'><br>
+    Номер документа <input name='document_number'><br>
     Оплата <select name="pay_type" id="">
         <option value="1">электроэнергии</option>
         <option value="2">пени</option>
