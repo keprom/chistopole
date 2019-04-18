@@ -962,20 +962,21 @@ class Billing extends Controller
         $this->db->where('period_id', $_POST['period_id']);
         $this->db->where('firm_id', $_POST['firm_id']);
         $data['itog'] = $this->db->get("industry.vedomost_itog")->row();
-        $this->load->library("pdf/pdf");
-        $this->pdf->SetSubject('TCPDF Tutorial');
-        $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-        $this->pdf->SetAutoPageBreak(TRUE);
-        $this->pdf->SetFont('dejavusans', '', 9);
-        $this->pdf->AddPage('P');
+        $this->load->plugin('chislo');
 
         if (!isset($_POST['nakladnaya'])) {
+            $this->load->library("pdf/pdf");
+            $this->pdf->SetSubject('TCPDF Tutorial');
+            $this->pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+            $this->pdf->SetAutoPageBreak(TRUE);
+            $this->pdf->SetFont('dejavusans', '', 9);
+            $this->pdf->AddPage('P');
             $string = $this->load->view("reports/schetfactura_new", $data, TRUE);
+            $this->pdf->writeHTML($string);
+            $this->pdf->Output('example_001.pdf', 'I');
         } else {
-            $string = $this->load->view("reports/nakladnaya", $data, TRUE);
+             $this->load->view("reports/nakladnaya", $data);
         }
-        $this->pdf->writeHTML($string);
-        $this->pdf->Output('example_001.pdf', 'I');
     }
 
     function pre_schetoplata()

@@ -1,214 +1,227 @@
-<?php
-function datetostring($date)
-{
-    $d = explode("-", $date);
-    return $d['2'] . '.' . $d['1'] . '.' . $d['0'];
-}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>СФ #<?php echo $firm->dogovor; ?></title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="/css/fullpage.css" rel="stylesheet">
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-function f_d($var)
-{
-    if (($var == 0) or ($var == NULL)) return "0.00"; else
-        return sprintf("%22.2f", $var);
-}
+        .page-break-always {
+            page-break-after: always;
+        }
 
-function f_d3($var)
-{
-    if (($var == 0) or ($var == NULL)) return "0.000"; else
-        return sprintf("%22.3f", $var);
-}
+        @media print {
+            .x-small {
+                font-size: x-small;
+            }
 
-function datetostring2($date)
-{
-    $d = explode("-", $date);
-    return $d['1'] . '.' . $d['0'];
-}
-
-?>
-<html>
-
-
-<body lang=RU>
-</body>
-<table width=100%>
-
-    <tr>
-        <td width=2100px align=right><b>РНН:</b> <?php echo $org->rnn; ?>
-        </td>
-    </tr>
-    <tr>
-        <td width=2100px><b>ЖСК/ИИК:</b> <?php echo $org->IIK . " в " . $org->bank_name; ?>
-        </td>
-    </tr>
-    <tr>
-        <td width=2100px><b>БИК:</b> <?php echo $org->bank_bik; ?>
-        </td>
-    </tr>
-    <tr>
-        <td width=2100px><b>БСН/БИН:</b> <?php echo $org->bin; ?>
-        </td>
-    </tr>
-    <tr>
-        <td width=2100px> <?php echo $org->svidetelstvo_nds ?>
-        </td>
-    </tr>
-
-    <tr>
-        <td width=2100px> <?php echo $org->org_name; ?>
-        </td>
-    </tr>
-
-    <tr>
-        <td width=2100px><b>Мекенжай/Адрес:</b> <?php echo $org->address; ?>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-    <tr align=center>
-        <td>
-            <b>Тұтынушылардың есебіне сәйкус<br/>
-                эл.энергиясын беру үшін <br/>
-                жөнелтпе құжат<br/></br>
-                <b>№</b> <?php if (strlen($schet2) == 0) {
-                    echo($schetfactura_date->id);
-                } else {
-                    echo $schet2;
-                }
-                echo " от ";
-                if (strlen($data_schet) == 0) {
-                    echo datetostring($schetfactura_date->date);
-                } else {
-                    echo $data_schet;
-                } ?>
-        </td>
-
-    </tr>
-    <tr>
-        <td></td>
-    </tr>
-    <tr>
-        <td> <?php echo "От кого " . $org->org_name; ?></td>
-    </tr>
-    <tr>
-        <td><?php echo "Кому " . $firm->name; ?></td>
-    </tr>
-</table>
-<br>
-
-<table border="1px" width="100%" align="center">
-    <tr>
-        <td rowspan="1" width="100px" valign="middle">№ п/п</td>
-        <td rowspan="1" width="600px" valign="middle">Наименование материалов</td>
-        <td rowspan="1" width="200px" valign="middle">Ед.изм.<br/></td>
-        <td rowspan="1" width="500px" valign="middle">Кол-во<br/></td>
-        <td rowspan="1" width="300px" valign="middle">Цена без НДС</td>
-        <td rowspan="1" width="300px" valign="middle">Сумма<br/></td>
-    </tr>
-
-    <tr>
-        <td width="100px">1</td>
-        <td width="600px">2</td>
-        <td width="200px">3</td>
-        <td width="500px">4</td>
-        <td width="300px">5</td>
-        <td width="300px">6</td>
-    </tr>
-    <?php
-    $sum_bez_nds = 0;
-    $sum_nds = 0;
-    $sum = 0;
-    $i = 1;
-
-    $i_t = $itog->itog_tenge;
-    $i_nds = $itog->itogo_nds;
-    $i_itogo = $itog->itogo_with_nds;
-
-    foreach ($s as $s2):
-        ?>
-        <tr align="center">
-            <TD width="100px"><?php echo $i; ?></td>
-            <TD width="600px">электроэнергии<?php echo datetostring2($schetfactura_date->date); ?> </td>
-            <TD width="200px">КВТ.Ч</td>
-            <TD width="500px" align="right"><?php echo f_d($s2->kvt); ?></td>
-            <TD width="300px" align="right">
-                <?php echo f_d3($s2->tariff_value); ?></td>
-
-
-            <TD width="300px" align="right">
-                <?php
-                if ($i_t - $s2->tenge > 1) {
-                    echo f_d($s2->tenge);
-                    $sum_bez_nds += $s2->tenge;
-                    $i_t -= f_d($s2->tenge);
-                } else echo $i_t;
-                ?>
+            .smaller {
+                font-size: smaller;
+            }
+        }
+    </style>
+</head>
+<body class="portrait">
+<div class="smaller" id="nakl">
+    <table class="block border-collapse">
+        <tbody>
+        <tr>
+            <td align="center" width="65%"><h4 class="no-margin"><?php echo $org->org_name; ?></h4></td>
+            <td align="right" rowspan="2">
+                <i style="font-size: x-small">Приложение 26<br>
+                    к приказу Министра финансов Республики Казахстан<br>
+                    от 20 декабря 2012 года № 562 </i>
             </td>
-
         </tr>
-    <?php endforeach; ?>
-    <tr align="center">
-        <TD width="100px"></td>
-        <TD width="600px">НДС 12%</td>
-        <TD width="200px"></td>
-        <TD width="500px"></td>
-        <TD width="300px"></td>
-        <TD width="300px" align="right">
-            <?php echo f_d($itog->itogo_nds); ?>
-        </td>
-    </tr>
-    <tr align="center">
-        <TD width="100px"></td>
-        <TD width="600px">Итого с НДС</td>
-        <TD width="200px"></td>
-        <TD width="500px"></td>
-        <TD width="300px"></td>
-        <TD width="300px" align="right">
-            <?php echo f_d($itog->itogo_with_nds); ?>
-        </td>
-    </tr>
+        <tr>
+            <td align="center">
+                <hr>
+                <i>организация (индивидуальный предприниматель)</i></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">Форма З-2</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="block border-collapse">
+        <tbody>
+        <tr>
+        <tr>
+            <td></td>
+            <td class="border-td" align="center" style="width: 10%">БИН</td>
+            <td class="border-td" align="center" style="width: 15%"><?php echo $org->bin; ?></td>
+        </tr>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="block border-table">
+        <tr>
+            <td style="width: 70%;" align="center" rowspan="2"><h3 class="no-margin">Накладная на отпуск запасов на
+                    сторону</h3></td>
+            <td align="center">Номер документа</td>
+            <td align="center">Дата составления</td>
+        </tr>
+        <tr>
+            <td align="center"><?php echo "0" . ($schetfactura_date->schet2); ?></td>
+            <td align="center"><?php echo $data_schet; ?></td>
+        </tr>
+    </table>
+    <br>
+    <table class="block border-table">
+        <thead>
+        <tr>
+            <th>Организация (индивидуальный предприниматель) - отправитель</th>
+            <th>Организация (индивидуальный предприниматель) - получатель</th>
+            <th>Ответственный за поставку (Ф.И.О.)</th>
+            <th>Транспортная организация</th>
+            <th>Товарно - транспортная накладная (номер, дата)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><?php echo $org->org_name; ?></td>
+            <td><?php echo $firm->name; ?></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="block border-table">
+        <thead>
+        <tr>
+            <th rowspan=2 align=center>№ п./п.</th>
+            <th rowspan=2 align=center>Наименование, характеристика</th>
+            <th rowspan=2 align=center>Номенклатурный номер</th>
+            <th rowspan=2 align=center>Единица измерения</th>
+            <th colspan=2 align=center>Количество</th>
+            <th rowspan=2 align=center>Цена, в тенге</th>
+            <th rowspan=2 align=center>Сумма с НДС,<br> в тенге</th>
+            <th rowspan=2 align=center>Сумма НДС,<br> в тенге</th>
+        </tr>
+        <tr>
+            <th align=center>Подлежит отпуску</th>
+            <th align=center>Отпущено</th>
+        </tr>
+        <tr>
+            <th align=center>1</th>
+            <th align=center>2</th>
+            <th align=center>3</th>
+            <th align=center>4</th>
+            <th align=center>5</th>
+            <th align=center>6</th>
+            <th align=center>7</th>
+            <th align=center>8</th>
+            <th align=center>9</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $i = 1;
+        $itog_nds = $itog_with_nds = $itog_kvt = 0;
+        ?>
+        <?php foreach ($s as $ss): ?>
+            <tr>
+                <td align="center"><?php echo $i++; ?></td>
+                <td align="center">Электроэнергия</td>
+                <td></td>
+                <td align="center">кВт*ч</td>
+                <td align="center"><?php echo prettify_number($ss->kvt, 0); ?></td>
+                <td align="center"><?php echo prettify_number($ss->kvt, 0); ?></td>
+                <td align="center"><?php echo prettify_number($ss->tariff_value, 2); ?></td>
+                <td align="center"><?php echo prettify_number(($period->nds / 100 + 1) * $ss->tenge, 2); ?></td>
+                <td align="center"><?php echo prettify_number($period->nds * $ss->tenge / 100, 2); ?></td>
+                <?php
+                $itog_kvt += $ss->kvt;
+                $itog_nds += $period->nds * $ss->tenge / 100;
+                $itog_with_nds += ($period->nds / 100 + 1) * $ss->tenge;
+                ?>
+            </tr>
+        <?php endforeach; ?>
+        <tr>
+            <td colspan="6"></td>
+            <td class="nowrap" align="center"><b>Итого</b></td>
+            <td class="nowrap" align="center"><b><?php echo prettify_number($itog_with_nds); ?></b></td>
+            <td class="nowrap" align="center"><b><?php echo prettify_number($itog_nds); ?></b></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table>
+        <tbody>
+        <tr>
+            <td>Всего отпущено запасов (количество прописью): <?php echo kvt2str($itog_kvt); ?></td>
+        </tr>
+        <tr>
+            <td>Всего отпущено на сумму (прописью), в KZT: <?php echo num2str($itog->itogo_with_nds); ?></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
 
-</table>
-<br/>
-<table>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td align="left">Разрешил директор:</td>
-        <td align="right"> <?php echo trim($org->director); ?></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td align="left">Гл. бухгалтер:</td>
-        <td align="right"> <?php echo trim($org->glav_buh); ?></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td align="left">Отпустил Зам. директора:</td>
-        <td align="right"> <?php echo trim($org->nachalnik_otdela_sbyta); ?></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td align="left">Получил:</td>
-        <td align="right"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td align="left">Уполномоченный за подписание счета-фактуры за директора: инженер по реализации Легких В.Е.</td>
-        <td align="right"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td align="left">За главного бухгалтера: техник по реализации Достанова Б.Б.</td>
-        <td align="right"></td>
-        <td></td>
-    </tr>
-
-</table>
-
-</html> 
+    <table class="block">
+        <tbody>
+        <tr>
+            <td>Отпуск разрешил</td>
+            <td align="center">Директор <?php echo $org->director; ?> ______________</td>
+            <td width="20%"></td>
+            <td>По доверенности №</td>
+            <td><?php echo $edit3; ?></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><i>(должность)(Ф.И.О.)(подпись)</i></td>
+            <td></td>
+            <td>выданной</td>
+            <td align="center">____________________</td>
+        </tr>
+        <tr>
+            <td colspan="5">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Главный бухгалтер</td>
+            <td align="center"><?php echo $org->glav_buh; ?> ______________</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><i>(Ф.И.О.)(подпись)</i></td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td align="center">М.П.</td>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><br></td>
+        </tr>
+        <tr>
+            <td>Отпустил</td>
+            <td align="center">Достанова Б.Б. ___________</td>
+            <td></td>
+            <td>Запасы получил</td>
+            <td align="center">____________________</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><sup><i>(Ф.И.О.)(подпись)</i></sup></td>
+            <td></td>
+            <td align="center"></td>
+            <td align="center"><sup><i>(Ф.И.О.)(подпись)</i></sup></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
