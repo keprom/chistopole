@@ -222,7 +222,7 @@ function datetostring3($date)
             <td align="center">Директор <?php echo $org->director; ?> ______________</td>
             <td width="20%"></td>
             <td>По договору&nbsp;№</td>
-            <td><u><?php echo $firm->dogovor; ?> от <?php echo datetostring3($firm->dogovor_date); ?></u></td>
+            <td><u><?php echo $firm->dogovor; ?> от <?php echo datetostring3($firm->dogovor_date); ?> года</u></td>
         </tr>
         <tr>
             <td></td>
