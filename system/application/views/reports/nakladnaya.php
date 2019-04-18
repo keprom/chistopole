@@ -176,15 +176,15 @@
             <td>Отпуск разрешил</td>
             <td align="center">Директор <?php echo $org->director; ?> ______________</td>
             <td width="20%"></td>
-            <td>По доверенности №</td>
-            <td><?php echo $edit3; ?></td>
+            <td>По договору №</td>
+            <td><u><?php echo $firm->dogovor; ?></u></td>
         </tr>
         <tr>
             <td></td>
             <td align="center"><i>(должность)(Ф.И.О.)(подпись)</i></td>
             <td></td>
-            <td>выданной</td>
-            <td align="center">____________________</td>
+            <td></td>
+            <td align="center"></td>
         </tr>
         <tr>
             <td colspan="5">&nbsp;</td>
