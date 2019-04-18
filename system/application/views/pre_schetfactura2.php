@@ -3,7 +3,7 @@
     <input type=hidden name=firm_id value="<?php echo $firm_id; ?>">
     <input type='hidden' name='period_id' value="<?php echo $period_id; ?>">
     Выдача накладной <input type='checkbox' name="nakladnaya"><br><br>
-    Другая дата выдачи: <input name="data_schet" value='<?php echo date("d.m.Y", strtotime($r->data_schet)); ?>'><br>
+    Другая дата выдачи: <input name="data_schet" value='<?php echo date("Y-m-d", strtotime($r->data_schet)); ?>'><br>
     <br>
     Другой номер счетфактуры: <input name="schet2" value='<?php echo $r->schet2; ?>'><br><br>
     Последний номер счета-фактуры <input type="text" disabled value="<?php echo $max_schet_number; ?>"><br><br>

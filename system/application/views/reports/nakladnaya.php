@@ -42,6 +42,50 @@ function datetostring3($date)
 
     return $d['2'] . ' ' . $d['1'] . ' ' . $d['0'];
 }
+
+function datetostring2($date)
+{
+    $d = explode("-", $date);
+
+    if ($d['1'] == 1) {
+        $d['1'] = 'январь';
+    }
+    if ($d['1'] == 2) {
+        $d['1'] = 'февраль';
+    }
+    if ($d['1'] == 3) {
+        $d['1'] = 'март';
+    }
+    if ($d['1'] == 4) {
+        $d['1'] = 'апрель';
+    }
+    if ($d['1'] == 5) {
+        $d['1'] = 'май';
+    }
+    if ($d['1'] == 6) {
+        $d['1'] = 'июнь';
+    }
+    if ($d['1'] == 7) {
+        $d['1'] = 'июль';
+    }
+    if ($d['1'] == 8) {
+        $d['1'] = 'август';
+    }
+    if ($d['1'] == 9) {
+        $d['1'] = 'сентябрь';
+    }
+    if ($d['1'] == 10) {
+        $d['1'] = 'октябрь';
+    }
+    if ($d['1'] == 11) {
+        $d['1'] = 'ноябрь';
+    }
+    if ($d['1'] == 12) {
+        $d['1'] = 'декабрь';
+    }
+
+    return $d['1'] . ' ' . $d['0'];
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -179,12 +223,12 @@ function datetostring3($date)
         <?php foreach ($s as $ss): ?>
             <tr>
                 <td align="center"><?php echo $i++; ?></td>
-                <td align="center">Электроэнергия</td>
+                <td align="center">Электроэнергия за <?php echo datetostring2($data_schet); ?> года</td>
                 <td></td>
                 <td align="center">кВт*ч</td>
                 <td align="center"><?php echo prettify_number($ss->kvt, 0); ?></td>
                 <td align="center"><?php echo prettify_number($ss->kvt, 0); ?></td>
-                <td align="center"><?php echo prettify_number($ss->tariff_value, 2); ?></td>
+                <td align="center"><?php echo prettify_number($ss->tariff_value*($period->nds / 100 + 1), 2); ?></td>
                 <td align="center"><?php echo prettify_number(($period->nds / 100 + 1) * $ss->tenge, 2); ?></td>
                 <td align="center"><?php echo prettify_number($period->nds * $ss->tenge / 100, 2); ?></td>
                 <?php
