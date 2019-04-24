@@ -85,7 +85,8 @@ function f_d2($var)
         <td> (7)</td>
     </tr>
     <tr>
-        <td> Грузоотправитель <u><?php echo "БИН " . $org->bin . ", " . $org->org_name . ", " . $org->address; ?></u></td>
+        <td> Грузоотправитель <u><?php echo "БИН " . $org->bin . ", " . $org->org_name . ", " . $org->address; ?></u>
+        </td>
         <td> (8)</td>
     </tr>
     <tr align="right">
@@ -204,14 +205,27 @@ function f_d2($var)
         <td align="right">Техник ____________________________</td>
     </tr>
     <tr>
-        <td align="left">(Ф.И.О., подпись)</td>
-        <td align="right">(Ф.И.О., подпись)</td>
+        <td align="left"><sub>(Ф.И.О., подпись)</sub></td>
+        <td align="right"><sub>(Ф.И.О., подпись)</sub></td>
     </tr>
     <tr>
         <td align="left">&nbsp;</td>
         <td align="right">&nbsp;</td>
     </tr>
-
+    <tr>
+        <td align=left>Уполномоченный на подписание счета-фактуры за директора,<br> инженер по реализации
+            Легких В.Е. _______________
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td align=left><sub>(Ф.И.О., подпись)</sub></td>
+        <td align=right></td>
+    </tr>
+    <tr>
+        <td align="left">&nbsp;</td>
+        <td align="right">&nbsp;</td>
+    </tr>
     <tr>
         <td align="left">Главный бухгалтер организации</td>
         <td align="right">Бухгалтер потребителя</td>
@@ -221,13 +235,14 @@ function f_d2($var)
         <td align="right">___________________</td>
     </tr>
     <tr>
-        <td align="left">(Ф.И.О., подпись)</td>
-        <td align="right">(Ф.И.О., подпись)</td>
+        <td align="left"><sub>(Ф.И.О., подпись)</sub></td>
+        <td align="right"><sub>(Ф.И.О., подпись)</sub></td>
     </tr>
     <tr>
         <td colspan="2" align="left"><br/>Примечание. Без печати недействительно.
             Оригинал (первый экземпляр)-покупателю.
-            Копия (второй экземпляр)-поставщику.</td>
+            Копия (второй экземпляр)-поставщику.
+        </td>
     </tr>
 </table>
 </body>
